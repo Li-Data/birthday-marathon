@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Marathon — 3 August 2026 · Lusaka</title>
+<meta property="og:title" content="Birthday Marathon — Big Li turns 26">
+<meta property="og:description" content="5K or 10K, then braai, swimming, archery and a zipline. Mon 3 Aug 2026, Crosspark by Twalumba. RSVP by 24 July.">
+<meta property="og:image" content="photos/race-1.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F2EA;
+    --card: #FFFDF7;
+    --ink: #141414;
+    --green: #3A5B22;
+    --green-dark: #2C4619;
+    --gold: #D9A63C;
+    --grey: #6E6A5E;
+    --line: #DCD8CC;
+    --hero-ink: #F5F2EA;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--gold); color: var(--ink); }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ================= Top bar ================= */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    color: var(--hero-ink);
+    mix-blend-mode: normal;
+    background: linear-gradient(rgba(10,10,8,0.55), rgba(10,10,8,0));
+    transition: background 0.3s;
+  }
+  .topbar.solid {
+    background: rgba(20,20,18,0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .topbar .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .topbar .brand b { color: var(--gold); }
+  .topbar a.rsvp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  /* ================= Hero ================= */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    color: var(--hero-ink);
+    background: #141414;
+  }
+  .slides, .slides .slide {
+    position: absolute;
+    inset: 0;
+  }
+  .slide {
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 1.8s ease;
+  }
+  .slide.on {
+    opacity: 1;
+    animation: kenburns 9s ease-out forwards;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1.02); }
+    to   { transform: scale(1.12); }
+  }
+  .hero .shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,8,0.35) 0%, rgba(10,10,8,0.15) 40%, rgba(10,10,8,0.82) 100%);
+  }
+  .hero .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px 110px;
+    max-width: 1060px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-weight: 800;
+    font-size: clamp(52px, 13vw, 150px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--hero-ink);
+  }
+  .hero .sub {
+    margin-top: 18px;
+    max-width: 560px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: #D8D4C8;
+  }
+  .hero .meta {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero .meta span::before { content: "// "; color: var(--gold); }
+  .countdown {
+    display: flex;
+    gap: 18px;
+    margin-top: 26px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .countdown div { text-align: left; }
+  .countdown .num {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .countdown .lab { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #A8A498; margin-top: 4px; }
+  .scrollcue {
+    position: absolute;
+    bottom: 66px; right: 22px;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #A8A498;
+    writing-mode: vertical-rl;
+  }
+
+  /* ================= Ticker ================= */
+  .ticker {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    background: var(--gold);
+    color: var(--ink);
+    overflow: hidden;
+    border-top: 2px solid var(--ink);
+  }
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+    animation: ticker 26s linear infinite;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 0;
+  }
+  .ticker-track span { padding: 0 18px; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ================= Sections ================= */
+  section.block { padding: 84px 20px; }
+  .inner { max-width: 1060px; margin: 0 auto; }
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+  .kicker::before { content: "// "; color: var(--gold); }
+  h2.title {
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 56px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 34px;
+  }
+
+  /* reveal */
+  .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .rev.in { opacity: 1; transform: none; }
+
+  /* ---- Day plan ---- */
+  .timeline { border-left: 2px solid var(--ink); }
+  .tl {
+    position: relative;
+    padding: 0 0 34px 28px;
+  }
+  .tl:last-child { padding-bottom: 0; }
+  .tl::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--ink);
+  }
+  .tl .t {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--green);
+  }
+  .tl h3 { font-size: 22px; font-weight: 800; text-transform: uppercase; margin: 2px 0 4px; }
+  .tl p { font-size: 15px; color: #4A473E; max-width: 620px; }
+
+  /* ---- Rules grid ---- */
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .rule {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  .rule .idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .rule h3 { font-size: 18px; font-weight: 800; text-transform: uppercase; margin: 8px 0 6px; }
+  .rule p { font-size: 14px; color: #4A473E; }
+
+  /* ================= Form ================= */
+  .formcard {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 8px 8px 0 var(--ink);
+    padding: 30px 24px;
+    max-width: 620px;
+  }
+  .deadline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--grey);
+    margin-bottom: 4px;
+  }
+  .deadline b { color: var(--green); }
+  label { display: block; font-weight: 600; font-size: 14px; margin: 18px 0 6px; }
+  label .opt { font-weight: 400; color: var(--grey); }
+  input[type=text], input[type=tel], input[type=date], input[type=number] {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    padding: 12px 14px;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: #fff;
+  }
+  input:focus-visible, .card:focus-within, button:focus-visible, .waiver-check:focus-within, a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .card {
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: #fff;
+    padding: 14px 6px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+  .card input { position: absolute; opacity: 0; }
+  .card .big { font-family: 'Anton', sans-serif; font-size: 22px; display: block; }
+  .card .small { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--grey); font-family: 'JetBrains Mono', monospace; }
+  .card:has(input:checked) { background: var(--green-dark); color: #FFFDF7; border-color: var(--green-dark); }
+  .card:has(input:checked) .small { color: var(--gold); }
+  .toggle { display: flex; gap: 8px; }
+  .toggle .card { flex: 1; padding: 12px 6px; }
+  #plusone-details { display: none; }
+  #plusone-details.show { display: block; }
+
+  .waiver {
+    margin-top: 26px;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .waiver h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 10px 16px;
+  }
+  .waiver-scroll {
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .waiver-scroll p, .waiver-scroll ol { margin-bottom: 10px; }
+  .waiver-scroll ol { padding-left: 20px; }
+  .waiver-scroll li { margin-bottom: 8px; }
+  .waiver-scroll .shout { font-weight: 700; }
+  .waiver-check {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-top: 2px dashed var(--line);
+    cursor: pointer;
+  }
+  .waiver-check input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--green); }
+  .waiver-check span { font-size: 14px; font-weight: 500; }
+  .waiver-print { padding: 0 16px 14px; font-size: 13px; }
+  .waiver-print a { color: var(--green); font-weight: 700; }
+
+  button.submit {
+    margin-top: 26px;
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--green);
+    color: #FFFDF7;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  button.submit:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+  button.submit:disabled { opacity: 0.5; cursor: wait; }
+  .err { margin-top: 12px; color: #B3261E; font-weight: 600; font-size: 14px; display: none; }
+  .err.show { display: block; }
+  #closed {
+    display: none;
+    border: 2px dashed var(--green);
+    border-radius: 10px;
+    padding: 18px;
+    background: var(--card);
+    font-size: 15px;
+    max-width: 620px;
+  }
+
+  /* ================= Confirmation bib ================= */
+  #done { display: none; max-width: 620px; }
+  #done.show { display: block; }
+  .bib {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--ink);
+    position: relative;
+  }
+  .bib-band {
+    background: var(--green);
+    color: #FFFDF7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .bib-body { padding: 28px 20px 24px; text-align: center; }
+  .bib-pin {
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+  .pin-tl { top: 46px; left: 10px; }
+  .pin-tr { top: 46px; right: 10px; }
+  .mybib-number {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(80px, 22vw, 140px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .mybib-name { font-family: 'Anton', sans-serif; font-size: 26px; text-transform: uppercase; margin-top: 4px; }
+  .mybib-cat {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--green);
+    color: #FFFDF7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .bib-meta {
+    border-top: 2px dashed var(--line);
+    margin-top: 20px;
+    padding-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .screenshot-hint { margin-top: 18px; text-align: center; font-size: 13px; color: var(--grey); }
+  .brief {
+    margin-top: 22px;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: var(--card);
+    overflow: hidden;
+  }
+  .brief h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 10px 16px;
+  }
+  .brief ul { list-style: none; }
+  .brief li { padding: 11px 16px; font-size: 14px; }
+  .brief li + li { border-top: 1px solid var(--line); }
+  .brief strong { color: var(--green); }
+
+  footer {
+    background: var(--ink);
+    color: #A8A498;
+    text-align: center;
+    padding: 34px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  footer .gold { color: var(--gold); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .slide.on { animation: none; transform: none; }
+    .ticker-track { animation: none; }
+    .rev { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { transition: none !important; }
+  }
+  @media (max-width: 480px) {
+    .countdown { gap: 14px; }
+    .hero-inner { padding-bottom: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ EDIT THESE DETAILS ============ -->
+<script>
+  const CONFIG = {
+    SUPABASE_URL: "https://YOUR-PROJECT.supabase.co",
+    SUPABASE_ANON_KEY: "YOUR_ANON_KEY",
+    EVENT_ISO: "2026-08-03T07:00:00+02:00",     // start gun, Lusaka time
+    DEADLINE_ISO: "2026-07-24T23:59:59+02:00",  // RSVP closes
+    WHATSAPP: "0974053948",                      // your number, for questions
+    // Drop more race photos into /photos and list them here, best first.
+    PHOTOS: [
+      "photos/race-1.jpg",
+      "photos/race-2.jpg",
+      "photos/race-3.jpg",
+      "photos/race-4.jpg",
+      "photos/race-5.jpg",
+      "photos/race-6.jpg",
+      "photos/race-7.jpg",
+      "photos/race-8.jpg",
+      "photos/race-9.jpg",
+      "photos/race-10.jpg",
+    ],
+  };
+</script>
+<!-- ============================================ -->
+
+<header class="topbar" id="topbar">
+  <span class="brand"><b>BIG LI/26</b> — BIRTHDAY MARATHON</span>
+  <a class="rsvp" href="#register">RSVP →</a>
+</header>
+
+<section class="hero">
+  <div class="slides" id="slides" aria-hidden="true"></div>
+  <div class="shade"></div>
+  <div class="grain"></div>
+
+  <div class="hero-inner">
+    <p class="eyebrow">You're invited // Big Li turns 26</p>
+    <h1>Birthday<br><span class="outline">Marathon</span></h1>
+    <p class="sub">One morning of running, one afternoon of everything else.</p>
+    <div class="meta">
+      <span>Mon 03.08.2026</span>
+      <span>07:00–17:00</span>
+      <span>Crosspark by Twalumba, Lusaka</span>
+    </div>
+    <div class="countdown" aria-label="Countdown to the start gun">
+      <div><div class="num" id="c-d">–</div><div class="lab">Days</div></div>
+      <div><div class="num" id="c-h">–</div><div class="lab">Hrs</div></div>
+      <div><div class="num" id="c-m">–</div><div class="lab">Min</div></div>
+      <div><div class="num" id="c-s">–</div><div class="lab">Sec</div></div>
+    </div>
+  </div>
+
+  <span class="scrollcue">Scroll ↓</span>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="inner">
+    <p class="kicker rev">The day</p>
+    <h2 class="title rev">Race, then <br>everything else</h2>
+    <div class="timeline">
+      <div class="tl rev">
+        <span class="t">07:00 — 09:00</span>
+        <h3>The run</h3>
+        <p>5 km or 10 km — pick your poison. Race pack collection before the start. Prizes for the first man and first woman home in each distance. The gun goes at 07:00 sharp; do not be the reason we wait.</p>
+      </div>
+      <div class="tl rev">
+        <span class="t">10:00 — 13:00</span>
+        <h3>Photos, content &amp; games</h3>
+        <p>Group photos, videos and games while the legs recover. Theme is black — clean, coordinated shots. You were warned.</p>
+      </div>
+      <div class="tl rev">
+        <span class="t">13:00 — 17:00</span>
+        <h3>Braai &amp; adventure</h3>
+        <p>Braai and drinks, then whatever you've got left: swimming, archery, zipline, game viewing. Shuttle heads back to Crossroads Mall after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="inner">
+    <p class="kicker rev">Know before you go</p>
+    <h2 class="title rev">The fine print</h2>
+    <div class="rules">
+      <div class="rule rev">
+        <span class="idx">01 / ENTRY</span>
+        <h3>K100 entry fee</h3>
+        <p>Entry fee into the venue, payable on the day.</p>
+      </div>
+      <div class="rule rev">
+        <span class="idx">02 / RACE PACK</span>
+        <h3>Gift = pack</h3>
+        <p>Your race pack is released against a gift labelled with your name. No cash or mobile money gifts.</p>
+      </div>
+      <div class="rule rev">
+        <span class="idx">03 / DRESS CODE</span>
+        <h3>All black</h3>
+        <p>Theme is black. The photos will thank you.</p>
+      </div>
+      <div class="rule rev">
+        <span class="idx">04 / SHUTTLE</span>
+        <h3>06:30 departure</h3>
+        <p>From Crossroads Mall, returning at day's end. Reserve a seat when you register.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="register" style="padding-top:0">
+  <div class="inner">
+    <p class="kicker rev">Registration</p>
+    <h2 class="title rev">Claim your bib</h2>
+
+    <form id="form" class="formcard rev" novalidate>
+      <p class="deadline">RSVP closes <b>FRI 24 JUL 2026</b> — race packs are limited.</p>
+
+      <label for="f-name">Full name</label>
+      <input type="text" id="f-name" autocomplete="name" required maxlength="80">
+
+      <div class="two-col">
+        <div>
+          <label for="f-phone">Phone number</label>
+          <input type="tel" id="f-phone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="09…">
+        </div>
+        <div>
+          <label for="f-dob">Date of birth</label>
+          <input type="date" id="f-dob" autocomplete="bday" required min="1920-01-01" max="2020-12-31">
+        </div>
+      </div>
+
+      <label>Choose your challenge</label>
+      <div class="cards" role="radiogroup" aria-label="Category">
+        <label class="card"><input type="radio" name="cat" value="5k" required><span class="big">5K</span><span class="small">Run</span></label>
+        <label class="card"><input type="radio" name="cat" value="10k"><span class="big">10K</span><span class="small">Run</span></label>
+        <label class="card"><input type="radio" name="cat" value="spectator"><span class="big">CHEER</span><span class="small">Spectator</span></label>
+      </div>
+
+      <label>Shuttle from Crossroads Mall? <span class="opt">Leaves 06:30, returns after</span></label>
+      <div class="toggle" role="radiogroup" aria-label="Shuttle">
+        <label class="card"><input type="radio" name="shuttle" value="yes" required><span class="big">YES</span><span class="small">Save a seat</span></label>
+        <label class="card"><input type="radio" name="shuttle" value="no"><span class="big">NO</span><span class="small">Own way</span></label>
+      </div>
+
+      <label>Bringing a plus one?</label>
+      <div class="toggle" role="radiogroup" aria-label="Plus one">
+        <label class="card"><input type="radio" name="plusone" value="yes" required><span class="big">YES</span><span class="small">+1</span></label>
+        <label class="card"><input type="radio" name="plusone" value="no"><span class="big">NO</span><span class="small">Just me</span></label>
+      </div>
+      <div id="plusone-details">
+        <div class="two-col">
+          <div>
+            <label for="f-plusname">Plus one's full name</label>
+            <input type="text" id="f-plusname" maxlength="80">
+          </div>
+          <div>
+            <label for="f-plusage">Their age</label>
+            <input type="number" id="f-plusage" inputmode="numeric" min="0" max="110">
+          </div>
+        </div>
+      </div>
+
+      <label for="f-ename">Emergency contact</label>
+      <div class="two-col">
+        <input type="text" id="f-ename" placeholder="Name" maxlength="80" required aria-label="Emergency contact name">
+        <input type="tel" id="f-ephone" placeholder="Phone" inputmode="tel" maxlength="20" required aria-label="Emergency contact phone">
+      </div>
+
+      <div class="waiver">
+        <h2>Waiver &amp; release of liability</h2>
+        <div class="waiver-scroll" tabindex="0" aria-label="Waiver text">
+          <p class="shout">Birthday Marathon — 3rd August 2026 · Crosspark by Twalumba</p>
+          <p class="shout">READ BEFORE ACCEPTING:</p>
+          <p>In consideration of being allowed to access and use the Crosspark by Twalumba facilities, and specifically participation in the Birthday Marathon and its associated activities — including the 5 km and 10 km runs, swimming, archery, zipline, game viewing, games and all other recreational activities forming part of the event — the undersigned acknowledges, appreciates, and agrees that:</p>
+          <ol>
+            <li>The risks of injury and illness (e.g. communicable diseases such as MRSA, influenza, and COVID-19) from the activities involved in this event are significant, including the potential for permanent paralysis and death, and while particular rules, equipment, and personal discipline may reduce these risks, the risks of serious injury and illness do exist; and,</li>
+            <li>I KNOWINGLY AND FREELY ASSUME ALL SUCH RISKS, both known and unknown, EVEN IF ARISING FROM THE NEGLIGENCE OF THE RELEASEES or others, and assume full responsibility for my participation; and,</li>
+            <li>I willingly agree to comply with the stated and customary terms and conditions for participation. If, however, I observe any unusual significant hazard during my presence or participation, I will remove myself from participation and bring such to the attention of the event organiser or the nearest official immediately; and,</li>
+            <li>I acknowledge that there will be no medical support provided by the event and that it is my own responsibility to treat any injury sustained before, during or because of the event; and,</li>
+            <li>I CONSENT to being photographed, filmed and otherwise recorded during the event, and grant the event organiser and host an irrevocable, royalty-free right to use, reproduce, edit and publish such photographs, videos and recordings — including on social media and other platforms — for personal, commemorative and promotional purposes connected to the event, without compensation, and I waive any right to inspect or approve such material before its use; and,</li>
+            <li>I, for myself and on behalf of my heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS CROSSPARK BY TWALUMBA and the BIRTHDAY MARATHON EVENT ORGANISER AND HOST, their officers, officials, agents, and/or employees, other participants, sponsoring agencies, sponsors, advertisers, and if applicable, owners and lessors of premises used to conduct the event ("RELEASEES"), WITH RESPECT TO ANY AND ALL INJURY, ILLNESS, DISABILITY, DEATH, or loss or damage to person or property, WHETHER ARISING FROM THE NEGLIGENCE OF THE RELEASEES OR OTHERWISE, to the fullest extent permitted by law.</li>
+          </ol>
+          <p class="shout">I HAVE READ THIS RELEASE OF LIABILITY AND ASSUMPTION OF RISK AGREEMENT, FULLY UNDERSTAND ITS TERMS, UNDERSTAND THAT I HAVE GIVEN UP SUBSTANTIAL RIGHTS BY ACCEPTING IT, AND ACCEPT IT FREELY AND VOLUNTARILY WITHOUT ANY INDUCEMENT.</p>
+          <p class="shout">I ALSO CONFIRM THAT I HAVE READ AND AGREE TO ABIDE BY THE RULES OF THE EVENT AS CIRCULATED PRIOR TO THE EVENT.</p>
+        </div>
+        <label class="waiver-check">
+          <input type="checkbox" id="f-waiver" required>
+          <span>I have read the waiver above and accept it. My name, date of birth and today's date are recorded as my signature.</span>
+        </label>
+        <p class="waiver-print">Bringing a plus one? They sign a paper copy at race pack collection — <a href="waiver.html">printable version here</a>.</p>
+      </div>
+
+      <button class="submit" id="btn" type="submit">Register</button>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+
+    <div id="closed">
+      <strong>RSVPs are closed.</strong> The deadline was 24 July and race packs are spoken for.
+      If you think you can still squeeze in, WhatsApp Big Li directly on <span id="closed-wa"></span>.
+    </div>
+
+    <section id="done">
+      <div class="bib">
+        <div class="bib-band"><span>Birthday Marathon</span><span>03.08.2026</span></div>
+        <span class="bib-pin pin-tl"></span><span class="bib-pin pin-tr"></span>
+        <div class="bib-body">
+          <div class="mybib-number" id="my-number">—</div>
+          <div class="mybib-name" id="my-name"></div>
+          <span class="mybib-cat" id="my-cat"></span>
+          <div class="bib-meta">
+            <span>07:00 start</span>
+            <span>Crosspark by Twalumba</span>
+          </div>
+        </div>
+      </div>
+      <p class="screenshot-hint">Screenshot this — quote your bib number at race pack collection.</p>
+
+      <div class="brief">
+        <h2>Race day briefing</h2>
+        <ul>
+          <li><strong>Be on time.</strong> Start gun is 07:00 sharp. Race packs are collected before the run.</li>
+          <li><strong>K100 entry fee</strong> into the venue, payable on the day.</li>
+          <li><strong>Bring a gift, labelled with your name</strong> — it's how you collect your race pack. No cash or mobile money gifts.</li>
+          <li><strong>Wear black.</strong> Clean, coordinated photos.</li>
+          <li id="brief-shuttle" style="display:none"><strong>Your shuttle leaves Crossroads Mall at 06:30.</strong> Don't make it wait.</li>
+          <li id="brief-plusone" style="display:none"><strong>Your plus one</strong> pays their own K100 entry and brings a labelled gift, and signs the waiver at race pack collection.</li>
+        </ul>
+      </div>
+      <div id="done-extra" style="margin-top:14px; font-size:14px;"></div>
+    </section>
+  </div>
+</section>
+
+<footer>
+  Questions? WhatsApp Big Li on <span class="gold" id="foot-wa"></span> · <span class="gold">LACE UP. SHOW UP. LET'S CELEBRATE.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  const sb = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+
+  document.getElementById('foot-wa').textContent = CONFIG.WHATSAPP;
+  document.getElementById('closed-wa').textContent = CONFIG.WHATSAPP;
+
+  // ---- Hero slideshow ----
+  // First slide loads immediately; the rest are attached after page load
+  // so 10 photos don't compete with first paint on mobile data.
+  const slidesEl = document.getElementById('slides');
+  CONFIG.PHOTOS.forEach((src, i) => {
+    const d = document.createElement('div');
+    d.className = 'slide' + (i === 0 ? ' on' : '');
+    if (i === 0) d.style.backgroundImage = "url('" + src + "')";
+    else d.dataset.src = src;
+    slidesEl.appendChild(d);
+  });
+  addEventListener('load', () => {
+    slidesEl.querySelectorAll('.slide[data-src]').forEach(d => {
+      const img = new Image();
+      img.onload = () => { d.style.backgroundImage = "url('" + d.dataset.src + "')"; };
+      img.src = d.dataset.src;
+    });
+  });
+  if (CONFIG.PHOTOS.length > 1) {
+    let cur = 0;
+    setInterval(() => {
+      const slides = slidesEl.children;
+      slides[cur].classList.remove('on');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('on');
+    }, 7000);
+  }
+
+  // ---- Ticker ----
+  const phrase = 'RUN · CELEBRATE · CONNECT · MON 3 AUG 2026 · CROSSPARK BY TWALUMBA · RSVP BY 24 JUL · ';
+  document.getElementById('ticker').innerHTML = ('<span>' + phrase + '</span>').repeat(8);
+
+  // ---- Topbar solid on scroll ----
+  const topbar = document.getElementById('topbar');
+  addEventListener('scroll', () => topbar.classList.toggle('solid', scrollY > 40), { passive: true });
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+  // ---- Countdown ----
+  const target = new Date(CONFIG.EVENT_ISO).getTime();
+  function tick() {
+    let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    const d = Math.floor(s / 86400); s -= d * 86400;
+    const h = Math.floor(s / 3600);  s -= h * 3600;
+    const m = Math.floor(s / 60);    s -= m * 60;
+    document.getElementById('c-d').textContent = d;
+    document.getElementById('c-h').textContent = String(h).padStart(2, '0');
+    document.getElementById('c-m').textContent = String(m).padStart(2, '0');
+    document.getElementById('c-s').textContent = String(s).padStart(2, '0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ---- Deadline gate ----
+  if (Date.now() > new Date(CONFIG.DEADLINE_ISO).getTime()) {
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('closed').style.display = 'block';
+  }
+
+  // ---- Plus one details toggle ----
+  document.querySelectorAll('input[name=plusone]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('plusone-details').classList.toggle('show', r.value === 'yes' && r.checked);
+    });
+  });
+
+  // ---- Submit ----
+  const form = document.getElementById('form');
+  const btn = document.getElementById('btn');
+  const err = document.getElementById('err');
+  const CAT_LABEL = { '5k': '5K Runner', '10k': '10K Runner', 'spectator': 'Cheer Squad' };
+
+  function fail(message) {
+    err.textContent = message;
+    err.classList.add('show');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.classList.remove('show');
+
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const dob = document.getElementById('f-dob').value;
+    const cat = form.querySelector('input[name=cat]:checked');
+    const shuttle = form.querySelector('input[name=shuttle]:checked');
+    const plusone = form.querySelector('input[name=plusone]:checked');
+    const plusName = document.getElementById('f-plusname').value.trim();
+    const plusAge = document.getElementById('f-plusage').value;
+    const eName = document.getElementById('f-ename').value.trim();
+    const ePhone = document.getElementById('f-ephone').value.trim();
+    const waiver = document.getElementById('f-waiver').checked;
+
+    if (!name || !phone || !dob || !cat || !shuttle || !plusone) {
+      return fail('Fill in your name, phone, date of birth, challenge, shuttle and plus one choices.');
+    }
+    if (plusone.value === 'yes' && (!plusName || plusAge === '')) {
+      return fail("Add your plus one's full name and age.");
+    }
+    if (!eName || !ePhone) {
+      return fail('Add an emergency contact name and phone number.');
+    }
+    if (!waiver) {
+      return fail('You need to read and accept the waiver to register.');
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Registering…';
+
+    const { data, error } = await sb.rpc('register_guest', {
+      p_name: name,
+      p_phone: phone,
+      p_dob: dob,
+      p_category: cat.value,
+      p_shuttle: shuttle.value === 'yes',
+      p_plus_one: plusone.value === 'yes',
+      p_plus_one_name: plusone.value === 'yes' ? plusName : null,
+      p_plus_one_age: plusone.value === 'yes' ? Number(plusAge) : null,
+      p_emergency_name: eName,
+      p_emergency_phone: ePhone,
+      p_waiver_accepted: true,
+    });
+
+    btn.disabled = false;
+    btn.textContent = 'Register';
+
+    if (error) {
+      return fail('Something went wrong. Check your connection and try again.');
+    }
+
+    document.getElementById('my-number').textContent = data.race_number;
+    document.getElementById('my-name').textContent = name;
+    document.getElementById('my-cat').textContent = CAT_LABEL[cat.value];
+    if (shuttle.value === 'yes') document.getElementById('brief-shuttle').style.display = 'list-item';
+    if (plusone.value === 'yes') document.getElementById('brief-plusone').style.display = 'list-item';
+
+    if (data.already_registered) {
+      document.getElementById('done-extra').innerHTML =
+        '<p>This phone number was already registered, so here\'s your original bib.</p>';
+    }
+
+    form.style.display = 'none';
+    document.getElementById('done').classList.add('show');
+    document.getElementById('done').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+</body>
+</html>
