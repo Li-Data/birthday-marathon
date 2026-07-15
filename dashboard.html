@@ -132,10 +132,12 @@
   <p class="sub">Birthday Marathon · Crosspark by Twalumba · Mon 3 August 2026</p>
 
   <div id="login">
-    <label for="email" style="font-weight:700; font-size:14px;">Your email</label>
+    <label for="email" style="font-weight:700; font-size:14px;">Email</label>
     <input type="email" id="email" autocomplete="email" placeholder="you@example.com" style="margin-top:6px;">
-    <button class="btn" id="sendlink">Send me a login link</button>
-    <p class="note" id="loginmsg">Only the organiser's email can see any data.</p>
+    <label for="password" style="font-weight:700; font-size:14px; display:block; margin-top:12px;">Password</label>
+    <input type="password" id="password" autocomplete="current-password" style="margin-top:6px; width:100%; padding:12px 14px; border:2px solid var(--ink); border-radius:8px; background:#FFFDF7;">
+    <button class="btn" id="signin">Sign in</button>
+    <p class="note" id="loginmsg">Race Control is for the organiser only.</p>
   </div>
 
   <div id="app">
@@ -144,6 +146,7 @@
       <input type="search" id="q" placeholder="Search name, phone or bib…">
       <button class="btn" id="refresh">Refresh</button>
       <button class="btn" id="csv">Export CSV</button>
+      <button class="btn" id="signout">Sign out</button>
     </div>
     <div class="tablewrap">
       <table>
@@ -162,17 +165,16 @@
   const sb = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
   let guests = [];
 
-  document.getElementById('sendlink').addEventListener('click', async () => {
+  async function signIn() {
     const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
     const msg = document.getElementById('loginmsg');
-    if (!email) { msg.textContent = 'Enter your email first.'; return; }
-    const { error } = await sb.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.href }
-    });
-    msg.textContent = error ? 'Could not send link: ' + error.message
-                            : 'Link sent. Check your inbox, then come back here.';
-  });
+    if (!email || !password) { msg.textContent = 'Enter your email and password.'; return; }
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) msg.textContent = 'Sign in failed: ' + error.message;
+  }
+  document.getElementById('signin').addEventListener('click', signIn);
+  document.getElementById('password').addEventListener('keydown', e => { if (e.key === 'Enter') signIn(); });
 
   sb.auth.onAuthStateChange((_event, session) => {
     if (session) {
@@ -252,6 +254,10 @@
 
   document.getElementById('q').addEventListener('input', render);
   document.getElementById('refresh').addEventListener('click', load);
+  document.getElementById('signout').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    location.reload();
+  });
 
   document.getElementById('csv').addEventListener('click', () => {
     const head = 'race_number,name,phone,dob,category,shuttle,plus_one,plus_one_name,plus_one_age,emergency_name,emergency_phone,waiver_accepted_at,gift_received\n';
