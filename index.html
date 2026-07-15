@@ -148,6 +148,7 @@
     max-width: 560px;
     font-size: clamp(15px, 2.4vw, 18px);
     color: #D8D4C8;
+    font-style: italic;
   }
   .hero .meta {
     display: flex;
@@ -521,6 +522,7 @@
   @media (max-width: 480px) {
     .countdown { gap: 14px; }
     .hero-inner { padding-bottom: 120px; }
+    .two-col { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -529,8 +531,8 @@
 <!-- ============ EDIT THESE DETAILS ============ -->
 <script>
   const CONFIG = {
-    SUPABASE_URL: "https://YOUR-PROJECT.supabase.co",
-    SUPABASE_ANON_KEY: "YOUR_ANON_KEY",
+    SUPABASE_URL: "https://xjmyrymtyltvatriemdb.supabase.co",
+    SUPABASE_ANON_KEY: "sb_publishable_ugOSz7oqu0-ouBpvBgbuPg_FV7HYeUZ",
     EVENT_ISO: "2026-08-03T07:00:00+02:00",     // start gun, Lusaka time
     DEADLINE_ISO: "2026-07-24T23:59:59+02:00",  // RSVP closes
     WHATSAPP: "0974053948",                      // your number, for questions
@@ -564,7 +566,7 @@
   <div class="hero-inner">
     <p class="eyebrow">You're invited // Big Li turns 26</p>
     <h1>Birthday<br><span class="outline">Marathon</span></h1>
-    <p class="sub">One morning of running, one afternoon of everything else.</p>
+    <p class="sub">"I don't expect you to be the man of the match every week, BUT what I expect from you every week, IS THE <b style="color:var(--gold); font-style:normal;">DEEEZZAAAYYYYAAA</b>"</p>
     <div class="meta">
       <span>Mon 03.08.2026</span>
       <span>07:00–17:00</span>
